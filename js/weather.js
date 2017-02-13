@@ -27,6 +27,6 @@ function loadWeather(location, woeid) {
         }
         error: function(error) {
             $(".error").html('<p>' + error + '</p>');
-        }
+        };
 });
 }
