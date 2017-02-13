@@ -4,7 +4,8 @@ if("geolocation" in navigator) {
     });
 } else {
     loadWeather("WARSAW, PL","");
-}$(document).ready(function() {
+}
+$(document).ready(function() {
     setInterval(loadWeather, 10000);
 });
 function loadWeather(location, woeid) {
