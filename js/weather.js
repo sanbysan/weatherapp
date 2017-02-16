@@ -1,12 +1,15 @@
-if("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(function(position) {
+function getWeather() {
+    if("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function(position) {
         loadWeather(position.coords.latitude + ',' + position.coords.longitude);
     });
 } else {
     loadWeather("WARSAW, PL","");
+  }
 }
 $(document).ready(function() {
-    setInterval(loadWeather, 10000);
+    setInterval(getWeather, 10000);
+    getWeather();
 });
 function loadWeather(location, woeid) {
     $.simpleWeather({
@@ -23,7 +26,7 @@ function loadWeather(location, woeid) {
             $(".temperature").html(temp);
             $(".climate_bg").html(wcode);
             $(".windspeed").html(wind);
-            $(".humidity").html(humidity);
+            $(".humidity").text(humidity);
         },
         error: function(error) {
             $(".error").html('<p>' + error + '</p>');
